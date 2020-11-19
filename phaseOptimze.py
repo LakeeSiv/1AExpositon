@@ -43,17 +43,19 @@ def func(x,error):
 plt.xscale("log")
 
 x_smooth = np.arange(0.1,1000,.1)
-# plt.plot(x,y, "rX", label = "Measurements")
+plt.plot(x,y, "rX", label = "Measurements")
 
+
+# plotting area of tolerance
 y_p= func(x_smooth,.25)
 y_n = func(x_smooth,-.25)
-plt.fill_between(x_smooth,y_p,y_n,linestyle = "--", hatch="/", facecolor = "lightgrey",edgecolor="r", label = "Tolerance Range")
+plt.fill_between(x_smooth,y_p,y_n,linestyle = "--", hatch="", facecolor = "gainsboro",edgecolor="w", label = "Tolerance Range")
 
 
-
-# plt.plot(x_smooth,f(x_smooth,a), label = f"Curve Fitted Line\nRC={round(-a,3)}")
-# plt.plot(x_smooth,func(x_smooth,.25), "--",color = "red",  label = f"+25% Error")
-# plt.plot(x_smooth,func(x_smooth,-.25), "--", color = "navy", label = f"-25% Error")
+# plotting lines
+plt.plot(x_smooth,f(x_smooth,a),color="black", label = f"Curve Fitted Line\nRC={round(-a,3)}")
+plt.plot(x_smooth,func(x_smooth,.25), "--",color = "red",  label = f"+25% Error")
+plt.plot(x_smooth,func(x_smooth,-.25), "--", color = "navy", label = f"-25% Error")
 
 plt.xlabel("f/Hz")
 plt.ylabel("Phase/deg")

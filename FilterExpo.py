@@ -1,3 +1,8 @@
+
+# Graph for Figure 1 in lab report 
+
+
+
 import matplotlib.pyplot as plt
 import numpy as np
 import random

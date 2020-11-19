@@ -6,6 +6,8 @@ import pandas as pd
 from scipy.optimize import curve_fit
 tau = 0.1
 
+
+# drawing theoretical graph
 """
 t = np.arange(0,1,0.01)
 
@@ -68,18 +70,20 @@ print(popt
 x_smooth = np.arange(0,1,0.01)
 
 
-# plt.plot(x,y, "rX",label = "Sample of the data\ncollected")
+plt.plot(x,y, "rX",label = "Sample of the data\ncollected")
 
 def func(x,error):
     return 4.99*(1-np.e**(-x/(0.1*(1+error))))
 
-# plt.plot(x_smooth,f(x_smooth,popt[0],4.99), label = f"Curve fitted line\nof data\ny={4.99}(1-e^(-t/{round(popt[0],3)}))")
-# plt.plot(x_smooth,func(x_smooth,0.25), "--", color = "red", label = "+25% Error in RC")
-# plt.plot(x_smooth,func(x_smooth,-0.25), "--", color = "navy",label = "+25% Error in RC")
+# drawing measured lines
+plt.plot(x_smooth,f(x_smooth,popt[0],4.99),color = "black", label = f"Curve fitted line\nof data\ny={4.99}(1-e^(-t/{round(popt[0],3)}))")
+plt.plot(x_smooth,func(x_smooth,0.25), "--", color = "red", label = "+25% Error in RC")
+plt.plot(x_smooth,func(x_smooth,-0.25), "--", color = "navy",label = "-25% Error in RC")
 
+# drawing area of tolerance
 y_p= func(x_smooth,.25)
 y_n = func(x_smooth,-.25)
-plt.fill_between(x_smooth,y_p,y_n,linestyle = "--", hatch="/", facecolor = "lightgrey",edgecolor="r", label = "Tolerance Range")
+plt.fill_between(x_smooth,y_p,y_n,linestyle = "--", hatch="", facecolor = "gainsboro",edgecolor="w", label = "Tolerance Range")
 
 
 
